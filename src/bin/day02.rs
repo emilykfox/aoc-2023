@@ -7,7 +7,7 @@ fn main() {
     let mut id = 0;
     for line in lines.iter() {
         id += 1;
-        let captures_iter = re.captures_iter(&line);
+        let captures_iter = re.captures_iter(line);
         let mut possible = true;
         let mut min_red = 0;
         let mut min_green = 0;

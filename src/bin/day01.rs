@@ -18,22 +18,11 @@ fn main() {
 
     let mut sum = 0;
     for line in lines.iter() {
-        let first = line
-            .chars()
-            .filter(|char| char.is_digit(10))
-            .next()
-            .unwrap()
-            .to_string()
-            .parse::<u32>()
-            .unwrap();
+        let first = line.chars().find_map(|char| char.to_digit(10)).unwrap();
         let last = line
             .chars()
             .rev()
-            .filter(|char| char.is_digit(10))
-            .next()
-            .unwrap()
-            .to_string()
-            .parse::<u32>()
+            .find_map(|char| char.to_digit(10))
             .unwrap();
         sum += 10 * first + last;
     }
