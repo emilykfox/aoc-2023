@@ -122,8 +122,8 @@ fn main() {
     let halfway = (length + 1) / 2;
     println!("Part A: {}", halfway);
 
-    // based on parity argument for Jordan curve theorem
-    // we'll walk just about the mid-line of each row as we maintain an `inside` variable
+    // based on the parity argument for the Jordan curve theorem
+    // we'll walk just above the mid-line of each row as we maintain an `inside` variable
     let mut num_inside = 0;
     for row in 0..tile_map.height {
         let mut inside = false;
