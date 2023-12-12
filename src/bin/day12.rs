@@ -59,13 +59,10 @@ fn main() {
         let size_str = split.next().unwrap();
 
         let records = records_str.chars().collect::<Vec<_>>();
-        let mut records_parts = Vec::new();
-        for _ in 0..4 {
-            records_parts.push(records.clone());
-            records_parts.push(vec!['?']);
-        }
-        records_parts.push(records);
-        let records = records_parts.into_iter().flatten().collect::<Vec<_>>();
+        let records = std::iter::repeat(records.clone())
+            .take(5)
+            .collect::<Vec<_>>()
+            .join(&'?');
 
         let sizes = size_str
             .split(',')
