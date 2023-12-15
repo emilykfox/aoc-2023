@@ -9,22 +9,22 @@ fn main() {
 
     let total = lines[0]
         .split(',')
-        .map(|string| hash(string) as u64)
-        .sum::<u64>();
+        .map(|string| hash(string) as u32)
+        .sum::<u32>();
 
     println!("Part A: {}", total);
 
     let mut boxes = vec![vec![]; 256];
 
     for step in lines[0].split(',') {
-        let operation_idx = step.find(&['-', '=']).unwrap();
+        let operation_idx = step.find(['-', '=']).unwrap();
         let label = &step[0..operation_idx];
         let boxx: &mut Vec<Lens> = &mut boxes[hash(label) as usize];
         let lens_idx = boxx
             .iter()
             .enumerate()
-            .find(|&(idx, lens)| lens.label == label)
-            .map(|(idx, _)| idx);
+            .find(|&(_idx, lens)| lens.label == label)
+            .map(|(idx, _lens)| idx);
         match step.chars().nth(operation_idx).unwrap() {
             '-' => {
                 if let Some(lens_idx) = lens_idx {
