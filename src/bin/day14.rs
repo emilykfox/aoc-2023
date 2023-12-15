@@ -144,12 +144,13 @@ fn main() {
             let prev_count = seen.get(&state);
             if let Some(prev_count) = prev_count {
                 let cycle_length = spin_count - *prev_count;
+                let old_spin_count = spin_count;
                 spin_count += ((GOAL - spin_count) / cycle_length) * cycle_length;
                 jumped = true;
-                // println!(
-                //     "Jumped to {} using a cycle length of {}.",
-                //     spin_count, cycle_length
-                // );
+                println!(
+                    "Jumped to {} after {} spins using a cycle length of {}.",
+                    spin_count, old_spin_count, cycle_length
+                );
             } else {
                 seen.insert(state.clone(), spin_count);
             }
